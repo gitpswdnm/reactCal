@@ -1,0 +1,38 @@
+.day {
+	border-radius: 5px;
+	padding: 8px 0;
+	cursor: pointer;
+}
+
+.day:hover {
+	background-color: var(--color-additional);
+}
+
+.additional {
+  padding: 6px;
+  font-weight: 300;
+  cursor: pointer;
+  color: var(--color-placeholder);
+}
+
+.today {
+	background-color: var(--background-color-calendar-header);
+}
+
+.selected {
+	color: var(--color-text);
+	background-color: var(--color-additional);
+}
+
+.selected:hover {
+	background-color: var(--color-additional);
+}
+
+/*.picked {*/
+/*  padding: 12px 0;*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  align-items: center;*/
+/*  cursor: pointer;*/
+/*  border-radius: 5px;*/
+/*}*/

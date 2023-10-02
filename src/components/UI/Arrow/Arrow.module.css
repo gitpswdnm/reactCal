@@ -1,0 +1,5 @@
+.arrow {
+	cursor: pointer;
+	color: var(--color-additional);
+	font-size: 20px;
+}
