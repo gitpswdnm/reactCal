@@ -1,0 +1,19 @@
+.button {
+	outline: none;
+	cursor: pointer;
+	background-color: var(--color-additional);
+	border: none;
+	border-radius: 5px;
+	padding: 1px 10px;
+	color: var(--color-text);
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+}
+
+/*.button:hover {*/
+/*	background-color: #3872ff;*/
+/*}*/
+
+.button:active {
+	scale: 0.9;
+}

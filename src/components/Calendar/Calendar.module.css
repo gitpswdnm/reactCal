@@ -1,5 +1,5 @@
 .container{
-  width: 350px ;
+  width: 98vw ;
   border-radius: 5px;
   text-transform: capitalize;
   background-color: var(--background-color-calendar);

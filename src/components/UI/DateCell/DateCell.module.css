@@ -1,32 +1,38 @@
-.day {
-	border-radius: 5px;
-	padding: 8px 0;
-	cursor: pointer;
-}
+/*.day {*/
+/*	display: flex;*/
+/*	align-items: center;*/
+/*	justify-content: center;*/
+/*	height: 3rem;*/
+/*	border-radius: 5px;*/
+/*	padding: 8px 0;*/
+/*	cursor: pointer;*/
+/*	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);*/
 
-.day:hover {
-	background-color: var(--color-additional);
-}
+/*}*/
 
-.additional {
-  padding: 6px;
-  font-weight: 300;
-  cursor: pointer;
-  color: var(--color-placeholder);
-}
+/*.day:hover {*/
+/*	background-color: var(--color-additional);*/
+/*}*/
 
-.today {
-	background-color: var(--background-color-calendar-header);
-}
+/*.additional {*/
+/*  padding: 6px;*/
+/*  font-weight: 300;*/
+/*  cursor: pointer;*/
+/*  color: var(--color-placeholder);*/
+/*}*/
 
-.selected {
-	color: var(--color-text);
-	background-color: var(--color-additional);
-}
+/*.today {*/
+/*	background-color: var(--background-color-calendar-header);*/
+/*}*/
 
-.selected:hover {
-	background-color: var(--color-additional);
-}
+/*.selected {*/
+/*	color: var(--color-text);*/
+/*	background-color: var(--color-additional);*/
+/*}*/
+
+/*.selected:hover {*/
+/*	background-color: var(--color-additional);*/
+/*}*/
 
 /*.picked {*/
 /*  padding: 12px 0;*/

@@ -1,0 +1,46 @@
+.date:hover {
+	background-color: var(--color-additional);
+}
+
+/*.additional {*/
+/*  padding: 6px;*/
+/*  font-weight: 300;*/
+/*  cursor: pointer;*/
+/*  color: var(--color-placeholder);*/
+/*}*/
+
+.today {
+	background-color: var(--background-color-calendar-header);
+}
+
+.picked {
+	color: var(--color-text);
+	background-color: var(--color-additional);
+}
+
+.picked:hover {
+	background-color: var(--color-additional);
+}
+
+.date {
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 5rem;
+	border-radius: 5px;
+	padding: 12px 0;
+	cursor: pointer;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.additional {
+	font-weight: 300;
+	cursor: pointer;
+	color: var(--color-placeholder);
+}
+
+.additional:hover{
+	font-weight: 400;
+	color: var(--color-text);
+}

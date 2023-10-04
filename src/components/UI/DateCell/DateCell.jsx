@@ -1,28 +1,39 @@
-import classes from './DateCell.module.css'
-import {
-	checkDateEqual,
-	checkIsCurrentDate,
-	DAYS
-} from '../../../utils/helpers/index.js'
+import { DAYS, MONTHS, YEARS } from '../../../utils/helpers/index.js'
+import Days from './Days/Days.jsx'
+import MonthsYears from './MonthsYears/MonthsYears.jsx'
 
-const DateCell = ({ dateItem, mode, selectedDate, setSelectedDate }) => {
+const DateCell = ({
+	itemIndex,
+	dateItem,
+	mode,
+	setMode,
+	selectedDate,
+	setSelectedDate,
+	setPickedDay,
+	pickedDay
+}) => {
+
 	if (mode === DAYS) {
-		const isToday = checkIsCurrentDate(dateItem, mode)
-		const isAdditionalDay = dateItem.month !== selectedDate.month
-		const isSelectedDate = checkDateEqual(dateItem, selectedDate)
 		return (
-			<div
-				aria-hidden
-				onClick={()=>setSelectedDate(dateItem)}
-				className={[
-					classes.day,
-					isToday ? classes.today : '',
-					isAdditionalDay ? classes.additional : '',
-					isSelectedDate ? classes.selected : ''
-				].join(' ')}
-			>
-				{dateItem.day}
-			</div>
+			<Days
+				dateItem={dateItem}
+				selectedDate={selectedDate}
+				setPickedDay={setPickedDay}
+				pickedDay={pickedDay}
+			/>
+		)
+	}
+	if (mode === MONTHS || mode === YEARS) {
+		return (
+			<MonthsYears
+				mode={mode}
+				setMode={setMode}
+				dateItem={dateItem}
+				selectedDate={selectedDate}
+				setSelectedDate={setSelectedDate}
+				pickedDay={pickedDay}
+				itemIndex={itemIndex}
+			/>
 		)
 	}
 }

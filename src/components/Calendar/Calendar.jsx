@@ -1,27 +1,28 @@
-import { DateTime } from 'luxon'
 import classes from './Calendar.module.css'
-import {
-	DAYS,
-	LEFT,
-	RIGHT,
-	getMonthOfDayItems,
-	today,
-	MONTHS
-} from '../../utils/helpers/index.js'
-import Arrow from '../UI/Arrow/Arrow.jsx'
-import FormHeader from '../UI/FormHeader/FormHeader.jsx'
-import FormBody from '../UI/FormBody/FormBody.jsx'
-import ItemsWrapper from '../Wrappers/ItemWrapper/ItemsWrapper.jsx'
-import DateCell from '../UI/DateCell/DateCell.jsx'
+// prettier-ignore
+import {DAYS,LEFT,RIGHT,today,MONTHS,getMonthOfDayItems,getYearOfMonthsItems,YEARS} from '../../utils/helpers/index.js'
+// prettier-ignore
+import { Arrow, DateCell, FormBody, FormHeader, ItemsWrapper, ModeSelector, MyButton } from '../index.js'
 import { useMemo, useState } from 'react'
-import DateWrapper from '../Wrappers/DateWrapper/DateWrapper.jsx'
+import { getYearsInterval } from '../../utils/helpers/index.js'
 
 const Calendar = () => {
 	const [mode, setMode] = useState(DAYS)
 	const [selectedDate, setSelectedDate] = useState(today)
+	const [pickedDay, setPickedDay] = useState(selectedDate)
+
 	const dateItems = useMemo(() => {
-		return getMonthOfDayItems(selectedDate)
-	}, [selectedDate.month, selectedDate.year])
+		switch (mode) {
+			case DAYS:
+				return getMonthOfDayItems(selectedDate)
+			case MONTHS:
+				return getYearOfMonthsItems(selectedDate)
+			case YEARS:
+				return getYearsInterval(selectedDate)
+			default:
+				return getMonthOfDayItems(selectedDate)
+		}
+	}, [selectedDate, mode])
 
 	const arrowDateHandler = (direction) => {
 		const changeQty = direction === LEFT ? -1 : 1
@@ -32,31 +33,53 @@ const Calendar = () => {
 			case MONTHS:
 				setSelectedDate((prevState) => prevState.plus({ years: changeQty }))
 				break
+			case YEARS:
+				setSelectedDate((prevState) => prevState.plus({ years: changeQty*10 }))
+				break
 		}
 	}
 
 	return (
 		<div className={classes.container}>
 			<FormHeader>
+				{pickedDay.toLocaleString()}{' '}
+				<MyButton
+					onClick={() => {
+						setSelectedDate(today)
+						setMode(DAYS)
+					}}
+					text={`TODAY ${today.toLocaleString()}`}
+				/>
+			</FormHeader>
+			<FormHeader>
 				<Arrow direction={LEFT} changeDate={arrowDateHandler} />
-					{selectedDate.day} {selectedDate.monthLong} {selectedDate.year}
+				<ModeSelector
+					mode={mode}
+					selectedDate={selectedDate}
+					setMode={setMode}
+					dateItems={dateItems}
+				/>
 				<Arrow direction={RIGHT} changeDate={arrowDateHandler} />
 			</FormHeader>
 			<FormBody>
-				<>
-					<div></div>
-					<ItemsWrapper mode={mode}>
-						{dateItems.map((dayItem) => (
+				<ItemsWrapper mode={mode} locale={'ru-RU'}>
+					{dateItems.map((dateItem, itemIndex) => (
 							<DateCell
-								key={`${dayItem.day}/${dayItem.month}/${dayItem.year}`}
-								dateItem={dayItem}
+								key={`${mode === DAYS ? dateItem.day + '/' : ''}${
+									mode === DAYS || mode=== MONTHS ? dateItem.month + '/' : ''
+								}${dateItem.year}`}
+								itemIndex={itemIndex}
+								dateItem={dateItem}
 								mode={mode}
+								setMode={setMode}
 								selectedDate={selectedDate}
 								setSelectedDate={setSelectedDate}
+								setPickedDay={setPickedDay}
+								pickedDay={pickedDay}
 							/>
-						))}
-					</ItemsWrapper>
-				</>
+						)
+					)}
+				</ItemsWrapper>
 			</FormBody>
 		</div>
 	)

@@ -1,5 +1,3 @@
-import { DateTime } from 'luxon'
-
 export const getMonthOfDayItems = (date) => {
 	const dayItemsList = []
 	for (let i = 0; i < 42; i++) {
