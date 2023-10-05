@@ -1,4 +1,7 @@
 .mode {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	border: none;
 	border-radius: 5px;
 	background-color: var(--color-additional);
@@ -6,6 +9,7 @@
 	font-size: 1.2rem;
 	padding: 1px 1rem;
 	cursor: pointer;
+	width:200px ;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 

@@ -21,3 +21,47 @@
   grid-template-rows: repeat(4, 1fr);
   gap: 1px 1px;
 }
+
+.LeftEnter {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.LeftEnterActive {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 300ms, opacity 300ms;
+}
+
+.LeftExit {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.LeftExitActive {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 300ms, opacity 300ms;
+}
+
+.RightEnter {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.RightEnterActive {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 300ms, opacity 300ms;
+}
+
+.RightExit {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.RightExitActive {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 300ms, opacity 300ms;
+}

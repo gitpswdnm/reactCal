@@ -1,8 +1,26 @@
-.container{
-  width: 98vw ;
-  border-radius: 5px;
-  text-transform: capitalize;
-  background-color: var(--background-color-calendar);
+.container {
+	width: 450px;
+	border-radius: 5px;
+	text-transform: capitalize;
+	background-color: var(--background-color-calendar);
+	overflow: hidden;
 }
 
+@media screen and (max-width: 450px) {
+	.container {
+		width: 98vw;
+		border-radius: 5px;
+		text-transform: capitalize;
+		background-color: var(--background-color-calendar);
+		overflow: hidden;
+	}
+}
 
+@media screen and (min-width: 1024px) {
+	.container {
+		width: 800px;
+		border-radius: 5px;
+		text-transform: capitalize;
+		background-color: var(--background-color-calendar);
+	}
+}

@@ -1,6 +1,5 @@
 import { DAYS, MONTHS, YEARS } from '../../../utils/helpers/index.js'
 import classes from './ModeSelector.module.css'
-import { getYearsInterval } from '../../../utils/helpers/date/getYearsInterval.js'
 
 const ModeSelector = ({ mode, selectedDate, setMode, dateItems }) => {
 	switch (mode) {

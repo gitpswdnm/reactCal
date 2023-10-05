@@ -2,7 +2,7 @@ import classes from './Calendar.module.css'
 // prettier-ignore
 import {DAYS,LEFT,RIGHT,today,MONTHS,getMonthOfDayItems,getYearOfMonthsItems,YEARS} from '../../utils/helpers/index.js'
 // prettier-ignore
-import { Arrow, DateCell, FormBody, FormHeader, ItemsWrapper, ModeSelector, MyButton } from '../index.js'
+import { Arrow, DateCell, FormBody, FormHeader, ItemsWrapper, ModeSelector, MyButton, } from '../index.js'
 import { useMemo, useState } from 'react'
 import { getYearsInterval } from '../../utils/helpers/index.js'
 
@@ -10,6 +10,8 @@ const Calendar = () => {
 	const [mode, setMode] = useState(DAYS)
 	const [selectedDate, setSelectedDate] = useState(today)
 	const [pickedDay, setPickedDay] = useState(selectedDate)
+	const [showDateChangeAnimation, setShowDateChangeAnimation] = useState(false)
+	const [arrowDirection, setArrowDirection] = useState('')
 
 	const dateItems = useMemo(() => {
 		switch (mode) {
@@ -26,6 +28,8 @@ const Calendar = () => {
 
 	const arrowDateHandler = (direction) => {
 		const changeQty = direction === LEFT ? -1 : 1
+		setArrowDirection(direction)
+		setShowDateChangeAnimation(prevState => !prevState)
 		switch (mode) {
 			case DAYS:
 				setSelectedDate((prevState) => prevState.plus({ months: changeQty }))
@@ -34,7 +38,9 @@ const Calendar = () => {
 				setSelectedDate((prevState) => prevState.plus({ years: changeQty }))
 				break
 			case YEARS:
-				setSelectedDate((prevState) => prevState.plus({ years: changeQty*10 }))
+				setSelectedDate((prevState) =>
+					prevState.plus({ years: changeQty * 10 })
+				)
 				break
 		}
 	}
@@ -61,24 +67,32 @@ const Calendar = () => {
 				/>
 				<Arrow direction={RIGHT} changeDate={arrowDateHandler} />
 			</FormHeader>
+
 			<FormBody>
-				<ItemsWrapper mode={mode} locale={'ru-RU'}>
+				<ItemsWrapper
+					mode={mode}
+					locale={'ru-RU'}
+					swipeHandler={arrowDateHandler}
+					isShow={showDateChangeAnimation}
+					setIsShow={setShowDateChangeAnimation}
+					direction={arrowDirection}
+
+				>
 					{dateItems.map((dateItem, itemIndex) => (
-							<DateCell
-								key={`${mode === DAYS ? dateItem.day + '/' : ''}${
-									mode === DAYS || mode=== MONTHS ? dateItem.month + '/' : ''
-								}${dateItem.year}`}
-								itemIndex={itemIndex}
-								dateItem={dateItem}
-								mode={mode}
-								setMode={setMode}
-								selectedDate={selectedDate}
-								setSelectedDate={setSelectedDate}
-								setPickedDay={setPickedDay}
-								pickedDay={pickedDay}
-							/>
-						)
-					)}
+						<DateCell
+							key={`${mode === DAYS ? dateItem.day + '/' : ''}${
+								mode === DAYS || mode === MONTHS ? dateItem.month + '/' : ''
+							}${dateItem.year}`}
+							itemIndex={itemIndex}
+							dateItem={dateItem}
+							mode={mode}
+							setMode={setMode}
+							selectedDate={selectedDate}
+							setSelectedDate={setSelectedDate}
+							setPickedDay={setPickedDay}
+							pickedDay={pickedDay}
+						/>
+					))}
 				</ItemsWrapper>
 			</FormBody>
 		</div>

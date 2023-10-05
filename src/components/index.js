@@ -3,6 +3,7 @@ export { default as WeekdaysWrapper } from './Wrappers/WeekdaysWrapper/WeekdaysW
 export { default as ItemsWrapper } from './Wrappers/ItemWrapper/ItemsWrapper.jsx'
 export { default as DateWrapper } from './Wrappers/DateWrapper/DateWrapper.jsx'
 export { default as AppWrapper } from './Wrappers/AppWrapper/AppWrapper.jsx'
+export { default as SwipeWrapper } from './Wrappers/SwipeWrapper/SwipeWrapper.jsx'
 export { default as Arrow } from './UI/Arrow/Arrow.jsx'
 export { default as DateCell } from './UI/DateCell/DateCell.jsx'
 export { default as FormBody } from './UI/FormBody/FormBody.jsx'
