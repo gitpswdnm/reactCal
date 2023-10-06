@@ -5,7 +5,13 @@ import {
 	DAYS
 } from '../../../../utils/helpers/index.js'
 
-const Days = ({ dateItem, pickedDay, selectedDate, setPickedDay }) => {
+const Days = ({
+	dateItem,
+	pickedDay,
+	selectedDate,
+	setPickedDay,
+	locale
+}) => {
 	const isToday = checkIsCurrentDate(dateItem, DAYS)
 	const isAdditionalDay = dateItem.month !== selectedDate.month
 	const isPickedDate = checkDateEqual(dateItem, pickedDay)

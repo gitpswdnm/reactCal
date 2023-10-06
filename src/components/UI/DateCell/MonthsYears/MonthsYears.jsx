@@ -13,7 +13,7 @@ const MonthsYears = ({
 	setSelectedDate,
 	setMode,
 	pickedDay,
-	mode
+	mode,
 }) => {
 	const isCurrentDate = checkIsCurrentDate(dateItem, mode)
 	const isPickedDate = checkDateEqual(dateItem, pickedDay, mode)

@@ -6,9 +6,9 @@ import { useState } from 'react'
 function App() {
 	return (
 		<AppWrapper>
-			<DateWrapper>
-				<div>React</div>
-			</DateWrapper>
+			{/*<DateWrapper>*/}
+			{/*	<div>React</div>*/}
+			{/*</DateWrapper>*/}
 			<Calendar/>
 		</AppWrapper>
 	)

@@ -10,7 +10,7 @@ const DateCell = ({
 	selectedDate,
 	setSelectedDate,
 	setPickedDay,
-	pickedDay
+	pickedDay,
 }) => {
 
 	if (mode === DAYS) {

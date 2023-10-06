@@ -9,10 +9,65 @@
 	font-size: 1.2rem;
 	padding: 1px 1rem;
 	cursor: pointer;
-	width:200px ;
+	width: 200px;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
 }
 
-.mode:active{
-  scale: 0.94;
+
+
+.mode:active {
+	scale: 0.94;
+}
+
+.LeftEnter {
+	transform: translateX(-300%);
+	opacity: 0;
+}
+
+.LeftEnterActive {
+	transform: translateX(0);
+	opacity: 1;
+	transition:
+		transform 300ms,
+		opacity 300ms;
+}
+
+.LeftExit {
+	transform: translateX(-300%);
+	opacity: 0;
+}
+
+.LeftExitActive {
+	transform: translateX(0);
+	opacity: 1;
+	transition:
+		transform 300ms,
+		opacity 300ms;
+}
+
+.RightEnter {
+	transform: translateX(300%);
+	opacity: 0;
+}
+
+.RightEnterActive {
+	transform: translateX(0);
+	opacity: 1;
+	transition:
+		transform 300ms,
+		opacity 300ms;
+}
+
+.RightExit {
+	transform: translateX(300%);
+	opacity: 0;
+}
+
+.RightExitActive {
+	transform: translateX(0);
+	opacity: 1;
+	transition:
+		transform 300ms,
+		opacity 300ms;
 }
